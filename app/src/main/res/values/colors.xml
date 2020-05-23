@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FEEAE6</color>
+    <color name="colorPrimaryDark">#FFFEEAE6</color>
+    <color name="colorAccent">#fd7014</color>
+    <color name="colorSurface">#070707</color>
+
+    <color name="teal_color">#1abea3</color>
+    <color name="light_grey">#dcdcdc</color>
+
+    <color name="new_detail_title">#000000</color>
+    <color name="new_detail_desc">#000000</color>
+    <color name="new_detail_content">#000000</color>
+    <color name="new_detail_date">#000000</color>
+    <color name="new_detail_author">#000000</color>
+    <color name="new_detail_read">#000000</color>
+
+    <color name="colorPeach">#FEEAE6</color>
+    <color name="news_detail_card">#ffffff</color>
+</resources>

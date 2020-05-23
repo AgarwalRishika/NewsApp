@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.rishika.newsapp.utils.AppUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="news"
+            type="com.rishika.newsapp.data.News" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin200dp"
+        android:layout_margin="@dimen/margin10dp"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/colorPeach"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        tools:layout_margin="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{clickListener}"
+            android:padding="10dp">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/news_image_card"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/news_desc_layout"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ivNews"
+                        loadImage="@{news.urlToImage}"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:transitionName="ivNews"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@tools:sample/avatars" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/news_desc_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin30dp"
+                app:layout_constraintEnd_toStartOf="@+id/news_image_card"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="3"
+                    android:text="@{news.title}"
+                    android:textColor="@android:color/black"
+                    android:transitionName="tvTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@tools:sample/lorem/random" />
+
+
+                <TextView
+                    android:id="@+id/tvDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/margin10dp"
+                    android:layout_marginBottom="5dp"
+                    android:ellipsize="end"
+                    android:lines="3"
+                    android:maxLines="6"
+                    android:text="@{news.description}"
+                    android:textColor="@android:color/darker_gray"
+                    android:transitionName="tvTitle"
+                    app:layout_constraintBottom_toTopOf="@+id/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    tools:text="@tools:sample/lorem/random" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/light_grey"
+                    app:layout_constraintBottom_toTopOf="@+id/tvDate"
+                    app:layout_constraintEnd_toEndOf="@+id/tvDate"
+                    app:layout_constraintStart_toStartOf="@+id/tvDate" />
+
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    showDateAndTime="@{news.publishedAt}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@+id/tvAuthor"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="@tools:sample/date/ddmmyy" />
+
+
+                <TextView
+                    android:id="@+id/tvAuthor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{news.author}"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:textColor="@android:color/black"
+                    android:visibility="@{AppUtils.INSTANCE.contains(news.author)?View.VISIBLE:View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="@tools:sample/first_names" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/tvDate"-->
+            <!--                showDateAndTime="@{news.publishedAt}"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:layout_marginBottom="8dp"-->
+            <!--                android:textAppearance="?textAppearanceCaption"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="1"-->
+            <!--                app:layout_constraintStart_toEndOf="@id/tvAuthor"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/tvTitle"-->
+            <!--                tools:text="@tools:sample/date/ddmmyy" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

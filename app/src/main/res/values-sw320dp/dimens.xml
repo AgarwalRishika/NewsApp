@@ -1,0 +1,7 @@
+<resources>
+	<dimen name="margin200dp">176dp</dimen>
+	<dimen name="margin10dp">8.8dp</dimen>
+	<dimen name="margin20dp">17.6dp</dimen>
+	<dimen name="margin30dp">26.4dp</dimen>
+	<dimen name="margin40dp">35.2dp</dimen>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+	<dimen name="margin200dp">200dp</dimen>
+	<dimen name="margin10dp">10dp</dimen>
+	<dimen name="margin20dp">20dp</dimen>
+	<dimen name="margin30dp">30dp</dimen>
+	<dimen name="margin40dp">40dp</dimen>
+</resources>
